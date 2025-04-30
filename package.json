@@ -54,6 +54,11 @@
       {
         "pragma": "MyThing.create"
       }
+    ],
+    [
+      "@semantic-release/npm", {
+        "npmPublish": false
+      }
     ]
   ]
 }
