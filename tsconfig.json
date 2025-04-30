@@ -1,0 +1,25 @@
+//tsconfig.json
+{
+  "compilerOptions": {
+    "jsx": "react-jsxdev",
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,        // Разрешить компиляцию файлов JavaScript
+    "outDir": "./dist",     // Указать папку для выходных файлов
+    "declaration": false,    // Генерировать файлы .d.ts
+    "emitDeclarationOnly": false, // Генерировать только декларации типов
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
