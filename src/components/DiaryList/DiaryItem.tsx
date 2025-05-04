@@ -1,8 +1,8 @@
 import { DiaryItemProps } from '../../types/diary';
-import { COLORMAP } from '../../constants/api';
+import { colorMap } from '../../types/sticker';
 
-const DiaryItem = ({ diary }: DiaryItemProps) => {
-  const bgColorClass = COLORMAP[diary.stickerColor] || 'bg-amber-100';
+const DiaryItem = ({ diary, handleGoToDiary }: DiaryItemProps) => {
+  const bgColorClass = colorMap[diary.stickerColor] || 'bg-amber-100';
 
   return (
     <div 
@@ -19,7 +19,7 @@ const DiaryItem = ({ diary }: DiaryItemProps) => {
         overflow-hidden
         sticky-note-enter
       `}
-      onClick={() => {}}
+      onClick={() => handleGoToDiary(diary.id)}
     >
       {/* Date in handwritten style */}
       <div className="text-right font-handwriting text-xs text-gray-600 mb-2">
