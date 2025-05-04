@@ -6,6 +6,12 @@
     "@semantic-release/changelog",
     "@semantic-release/github",
     [
+      "semantic-release-plugin-update-version-in-files",
+      {
+        "files": ["package.json"]
+      }
+    ],
+    [
       "@semantic-release/git",
       {
         "assets": ["dist/**/*.{js,css}", "docs", "package.json"],
