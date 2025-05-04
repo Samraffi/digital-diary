@@ -1,7 +1,20 @@
+import { useEffect, useState } from 'react';
 import DiaryList from '../components/DiaryList';
-import { DiariesPageProps } from '../types/diary';
+import { DiaryEntry } from '../types/diary';
+import { getDiaries } from '../services/diary/getDiaries';
 
-const DiariesPage = ({diaries}: DiariesPageProps) => {
+const DiariesPage = () => {
+  const [diaries, setDiaries] = useState<DiaryEntry[]>([]);
+
+  // Load diaries when component mounts
+  useEffect(() => {
+    const loadDiaries = async () => {
+      const data = await getDiaries();
+      if (data) setDiaries(data);
+    };
+    loadDiaries();
+  }, []);
+
   const isDarkMode = false;
   const searchQuery = '';
   const toggleTheme = () => false;

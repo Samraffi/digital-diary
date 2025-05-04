@@ -1,33 +1,14 @@
-import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router";
 import DiariesPage from "./pages/DiariesPage";
-import { fetchDiaries } from "./services/fetchDiaries";
-import { DiaryEntry } from "./types/diary";
+import DiaryViewPage from "./pages/DiaryViewPage";
 
 const App = () => {
-  const [diaries, setDiaries] = useState<DiaryEntry[]>([]);
-
-  // Load diaries when component mounts
-  useEffect(() => {
-    const loadDiaries = async () => {
-      const data = await fetchDiaries();
-      if (data) setDiaries(data);
-    };
-    loadDiaries();
-  }, []);
-
   return (
     <Router basename="/">
       <Routes>
         <Route path="/" element={<Navigate to="/diaries" replace />} />
-        <Route 
-          path="/diaries" 
-          element={
-            <DiariesPage
-              diaries={diaries}
-            />
-          } 
-        />
+        <Route path="/diaries" element={<DiariesPage />} />
+        <Route path="/diaries/:diaryId" element={<DiaryViewPage />} />
       </Routes>
     </Router>
   );

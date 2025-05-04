@@ -1,10 +1,12 @@
 import DiaryItem from './DiaryItem';
 import { DiaryEntry } from '../../types/diary';
+import { useNavigate } from 'react-router';
 
 const DiaryList = ({ diaries }: { diaries: DiaryEntry[] }) => {
-  const onItemClick = (id: string) => {
-    // For now, just log the clicked diary id
-    console.log('Diary item clicked:', id);
+  const navigate = useNavigate();
+  const handleGoToDiary = (id: string) => {
+    // console.log('Diary item clicked:', id);
+    navigate(`/diaries/${id}`);
   }
 
   return (
@@ -16,7 +18,7 @@ const DiaryList = ({ diaries }: { diaries: DiaryEntry[] }) => {
           <DiaryItem
             key={diary.id}
             diary={diary}
-            onClick={() => onItemClick(diary.id)}
+            handleGoToDiary={handleGoToDiary}
           />
         ))}
       </div>

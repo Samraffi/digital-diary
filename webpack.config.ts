@@ -45,6 +45,14 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.css$/,
+        include: path.resolve(__dirname, 'node_modules/react-loading-skeleton'),
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.css$/,
         include: path.resolve(__dirname, 'src'),
         use: [
           'style-loader',

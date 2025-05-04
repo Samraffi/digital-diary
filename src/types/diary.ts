@@ -11,7 +11,7 @@ export type DiaryEntry = {
 
 export type DiaryItemProps = {
   diary: DiaryEntry;
-  onClick: () => void;
+  handleGoToDiary: (id: string) => void;
 };
 
 export interface DiariesPageProps {
