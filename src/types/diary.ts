@@ -14,6 +14,12 @@ export type DiaryItemProps = {
   handleGoToDiary: (id: string) => void;
 };
 
-export interface DiariesPageProps {
+export type DiariesPageProps = {
   diaries: DiaryEntry[];
+}
+
+export type DeleteDiaryProps = {
+  isOpen: boolean;
+  onConfirm: () => void;
+  onCancel: () => void;
 }

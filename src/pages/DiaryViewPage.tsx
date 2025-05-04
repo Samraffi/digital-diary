@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import Skeleton from 'react-loading-skeleton';
-// import DeleteDiary from '../components/DeleteDiary';
+import DeleteDiary from '../components/DeleteDiary';
 import { DiaryEntry } from '../types/diary';
 import { colorMap } from '../types/sticker';
 import { getDiary } from '../services/diary/getDiary';
@@ -71,7 +71,6 @@ const DiaryViewPage = () => {
             shadow-lg 
             p-8 
             relative
-            transform rotate-1
           `}
         >
           {diary ?
@@ -125,11 +124,11 @@ const DiaryViewPage = () => {
       </div>
 
       {/* Delete confirmation modal */}
-      {/* <DeleteDiary
+      <DeleteDiary
         isOpen={showDeleteModal}
         onConfirm={handleConfirmDelete}
         onCancel={() => setShowDeleteModal(false)}
-      /> */}
+      />
     </div >
   );
 };
