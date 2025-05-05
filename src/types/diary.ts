@@ -1,3 +1,4 @@
+import { NavigateFunction } from 'react-router';
 import { StickerColor } from './sticker';
 
 export type DiaryEntry = {
@@ -22,4 +23,15 @@ export type DeleteDiaryProps = {
   isOpen: boolean;
   onConfirm: () => void;
   onCancel: () => void;
+}
+
+export type DiaryViewProps = {
+  diary: DiaryEntry;
+  diaryId: string | undefined;
+  redirect: (path: string) => void;
+  showModal: () => void;
+}
+
+export type UseDeleteDiary = {
+  (diaryId: string | undefined, navigate: NavigateFunction): () => Promise<void>;
 }
