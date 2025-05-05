@@ -1,6 +1,13 @@
 import { DiaryViewProps } from '../types/diary';
+import { assertHasKeys } from '../utils/assertHasKeys';
 
 const DiaryView = ({ diary, diaryId, redirect, showModal }: DiaryViewProps) => {
+  if(diary === null) {
+    throw new Error('Diary is null');
+  }
+
+  assertHasKeys(diary, ['content', 'emoji', 'createdAt']);
+
   return (
     <>
       {/* Date in handwritten style */}

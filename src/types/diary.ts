@@ -26,7 +26,7 @@ export type DeleteDiaryProps = {
 }
 
 export type DiaryViewProps = {
-  diary: DiaryEntry;
+  diary: DiaryEntry | null;
   diaryId: string | undefined;
   redirect: (path: string) => void;
   showModal: () => void;
@@ -34,4 +34,9 @@ export type DiaryViewProps = {
 
 export type UseDeleteDiary = {
   (diaryId: string | undefined, navigate: NavigateFunction): () => Promise<void>;
+}
+
+export type ErrorFallbackProps = {
+  error: Error;
+  resetErrorBoundary: () => void;
 }

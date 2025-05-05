@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { Suspense, useCallback, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import LoadingDiarySkeleton from '../components/Skeletons/LoadingDiarySkeleton';
 import DiaryView from '../components/DiaryView';
@@ -13,13 +13,13 @@ const DiaryViewPage = () => {
   const { diaryId } = useParams<{ diaryId: string }>();
   const { diary, loading, error } = useDiaryEntry();
 
+  if (error) {
+    throw error;
+  }
+
   const handleConfirmDelete = useDeleteDiary(diaryId, navigate);
   const showModal = useCallback(() => setShowDeleteModal(true), []);
   const hideModal = useCallback(() => setShowDeleteModal(false), []);
-
-  if (loading) return <LoadingDiarySkeleton />;
-  if (!diary) return <div>Ошибка: Дневник не найден</div>;
-  if (error) return <div>Ошибка: {error.message}</div>;
 
   return (
     <div className="min-h-screen p-4 wood-texture">
@@ -47,15 +47,18 @@ const DiaryViewPage = () => {
       <div className="flex justify-center items-start">
         <div
           className={`
-            ${getBackgroundColor(diary.stickerColor)} 
-            max-w-2xl w-full 
-            rounded-sm 
-            shadow-lg 
-            p-8 
+            ${getBackgroundColor(diary?.stickerColor ?? null)} 
+            max-w-2xl w-full
+            rounded-sm
+            shadow-lg
+            p-8
             relative
           `}
         >
-          <DiaryView diary={diary} diaryId={diaryId} redirect={navigate} showModal={showModal} />
+          {loading && <LoadingDiarySkeleton />}
+          <Suspense fallback={<LoadingDiarySkeleton />}>
+            {!loading && <DiaryView diary={diary} diaryId={diaryId} redirect={navigate} showModal={showModal} />}
+          </Suspense>
         </div>
       </div>
 

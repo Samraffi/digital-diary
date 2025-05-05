@@ -10,13 +10,15 @@ const useDiaryEntry = () => {
 
   const { diaryId } = useParams<{ diaryId: string }>();
 
-  // Load diary when component mounts
   useEffect(() => {
     const loadDiary = async () => {
       if (!diaryId) return;
 
       const data = await getDiary(diaryId);
-      if (data) setDiary(data);
+      if (data) {
+        setDiary(data);
+        setLoading(false);
+      }
     };
     loadDiary();
   }, [diaryId]);
