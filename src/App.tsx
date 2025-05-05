@@ -8,7 +8,7 @@ const App = () => {
   return (
     <ErrorBoundary
       FallbackComponent={ErrorFallback}
-      onError={(error, info) => console.error('Ошибка:', error, info)}
+      onError={(error, info) => console.error('Error:', error, info)}
     >
       <Router basename="/">
         <Routes>

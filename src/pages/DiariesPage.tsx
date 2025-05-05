@@ -23,13 +23,13 @@ const DiariesPage = () => {
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-amber-50 text-gray-800'}`}>
       {/* Header with search and theme toggle */}
       <div className="sticky top-0 z-10 p-4 shadow-sm backdrop-blur-sm bg-opacity-90 flex items-center justify-between">
-        <h1 className="text-2xl font-handwriting">Мой дневник</h1>
+        <h1 className="text-2xl font-handwriting">My Diary</h1>
         
         {/* Search bar */}
         <div className="relative max-w-md w-full mx-4">
           <input
             type="text"
-            placeholder="Найти запись..."
+            placeholder="Find entry..."
             value={searchQuery}
             onChange={(e) => (e.target.value)}
             className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"

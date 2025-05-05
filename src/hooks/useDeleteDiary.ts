@@ -9,7 +9,7 @@ const useDeleteDiary: UseDeleteDiary = (diaryId, navigate) => {
       await deleteDiary(diaryId);
       navigate('/diaries');
     } catch (err) {
-      console.error('Ошибка при удалении дневника:', err);
+      console.error('Error deleting diary:', err);
     }
   };
 

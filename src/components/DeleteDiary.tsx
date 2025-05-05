@@ -8,11 +8,11 @@ const DeleteDiary = ({ isOpen, onConfirm, onCancel }: DeleteDiaryProps) => {
       <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
         <div className="mt-3 text-center">
           <h3 className="text-lg leading-6 font-medium text-gray-900">
-            Удалить запись?
+            Delete entry?
           </h3>
           <div className="mt-2 px-7 py-3">
             <p className="text-sm text-gray-500">
-              Вы уверены, что хотите удалить эту запись? Это действие необратимо.
+              Are you sure you want to delete this entry? This action cannot be undone.
             </p>
           </div>
           <div className="items-center px-4 py-3">
@@ -20,13 +20,13 @@ const DeleteDiary = ({ isOpen, onConfirm, onCancel }: DeleteDiaryProps) => {
               className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
               onClick={onConfirm}
             >
-              Удалить
+              Delete
             </button>
             <button
               className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
               onClick={onCancel}
             >
-              Отмена
+              Cancel
             </button>
           </div>
         </div>

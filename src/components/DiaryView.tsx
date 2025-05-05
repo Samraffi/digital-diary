@@ -33,13 +33,13 @@ const DiaryView = ({ diary, diaryId, redirect, showModal }: DiaryViewProps) => {
           onClick={() => redirect(`/diaries/${diaryId}/edit`)}
           className="flex items-center gap-1 px-4 py-2 bg-white/70 rounded-full shadow-sm hover:bg-white transition-colors"
         >
-          <span>✏️</span> Редактировать
+          <span>✏️</span> Edit
         </button>
         <button
           onClick={showModal}
           className="flex items-center gap-1 px-4 py-2 bg-white/70 rounded-full shadow-sm hover:bg-white transition-colors"
         >
-          <span>🗑️</span> Удалить
+          <span>🗑️</span> Delete
         </button>
       </div>
     </>

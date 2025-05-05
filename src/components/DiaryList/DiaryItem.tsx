@@ -34,7 +34,7 @@ const DiaryItem = ({ diary, handleGoToDiary }: DiaryItemProps) => {
       {/* Content with paper-like styling */}
       <div className="mt-6">
         <p className="text-gray-800 font-handwriting line-clamp-5 text-sm">
-          {diary.content || 'Здесь будет ваша запись...'}
+          {diary.content || 'Your entry will be here...'}
         </p>
       </div>
       
