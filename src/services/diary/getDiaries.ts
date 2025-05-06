@@ -9,5 +9,6 @@ export const getDiaries = async () => {
     return data;
   } catch (error) {
     console.error('Error fetching diaries:', error);
+    throw error;
   }
 };

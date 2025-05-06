@@ -10,5 +10,6 @@ export const deleteDiary = async (id: string) => {
     return data;
   } catch (error) {
     console.error('Error deleting diary:', error);
+    throw error;
   }
 };
