@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import DiariesPage from "./pages/DiariesPage";
 import DiaryViewPage from "./pages/DiaryViewPage";
 import ErrorFallback from './components/ErrorFallback';
+import DiaryCreatePage from "./pages/DiaryCreatePage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Navigate to="/diaries" replace />} />
           <Route path="/diaries" element={<DiariesPage />} />
           <Route path="/diaries/:diaryId" element={<DiaryViewPage />} />
+          <Route path="/diaries/add" element={<DiaryCreatePage />} />
         </Routes>
       </Router>
     </ErrorBoundary>

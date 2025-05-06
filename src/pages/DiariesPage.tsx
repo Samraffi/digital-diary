@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import DiaryList from '../components/DiaryList';
 import { DiaryEntry } from '../types/diary';
 import { getDiaries } from '../services/diary/getDiaries';
+import { useNavigate } from 'react-router';
 
 const DiariesPage = () => {
   const [diaries, setDiaries] = useState<DiaryEntry[]>([]);
+  let navigate = useNavigate();
 
   // Load diaries when component mounts
   useEffect(() => {
@@ -51,7 +53,7 @@ const DiariesPage = () => {
       
       {/* Floating add button */}
       <button
-        onClick={() => ('')}
+        onClick={() => navigate('/diaries/add')}
         className="fixed bottom-8 right-8 w-16 h-16 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors flex items-center justify-center text-3xl"
       >
         +
