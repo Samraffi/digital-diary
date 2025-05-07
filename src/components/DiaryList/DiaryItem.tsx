@@ -22,7 +22,7 @@ const DiaryItem = ({ diary, handleGoToDiary }: DiaryItemProps) => {
       onClick={() => handleGoToDiary(diary.id)}
     >
       {/* Date in handwritten style */}
-      <div className="text-right font-handwriting text-xs text-gray-600 mb-2">
+      <div className="text-right font-handwriting text-xs opacity-70 mb-2">
         {new Date(diary.createdAt).toLocaleDateString()}
       </div>
       
@@ -33,13 +33,13 @@ const DiaryItem = ({ diary, handleGoToDiary }: DiaryItemProps) => {
 
       {/* Content with paper-like styling */}
       <div className="mt-6">
-        <p className="text-gray-800 font-handwriting line-clamp-5 text-sm">
+        <p className="font-handwriting line-clamp-5 text-sm">
           {diary.content || 'Your entry will be here...'}
         </p>
       </div>
       
       {/* Shadow gradient at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-gray-100/20 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-current/10 to-transparent"></div>
     </div>
   );
 };

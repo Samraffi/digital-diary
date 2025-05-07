@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import DiaryList from '../components/DiaryList';
 import { DiaryEntry } from '../types/diary';
 import { getDiaries } from '../services/diary/getDiaries';
-import { useNavigate } from 'react-router';
+import { useTheme } from '../hooks/useTheme';
 
 const DiariesPage = () => {
   const [diaries, setDiaries] = useState<DiaryEntry[]>([]);
+  const { isDarkMode, toggleTheme } = useTheme();
   let navigate = useNavigate();
 
   // Load diaries when component mounts
@@ -17,12 +19,10 @@ const DiariesPage = () => {
     loadDiaries();
   }, []);
 
-  const isDarkMode = false;
   const searchQuery = '';
-  const toggleTheme = () => false;
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-amber-50 text-gray-800'}`}>
+    <div className="min-h-screen">
       {/* Header with search and theme toggle */}
       <div className="sticky top-0 z-10 p-4 shadow-sm backdrop-blur-sm bg-opacity-90 flex items-center justify-between">
         <h1 className="text-2xl font-handwriting">My Diary</h1>
@@ -34,7 +34,7 @@ const DiariesPage = () => {
             placeholder="Find entry..."
             value={searchQuery}
             onChange={(e) => (e.target.value)}
-            className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <span className="absolute right-3 top-2.5">🔍</span>
         </div>
@@ -42,7 +42,7 @@ const DiariesPage = () => {
         {/* Theme toggle */}
         <button 
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+          className="p-2 rounded-full"
         >
           {isDarkMode ? '☀️' : '🌙'}
         </button>

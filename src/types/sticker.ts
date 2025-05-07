@@ -8,11 +8,11 @@ export type StickerColor =
 export const colorsMap = ["yellow", "pink", "blue", "green", "purple"] as StickerColor[]
  
 export const colorMap: Record<StickerColor, string> = {
-  yellow: 'bg-amber-100',
-  pink: 'bg-pink-100',
-  blue: 'bg-sky-100',
-  green: 'bg-emerald-100',
-  purple: 'bg-purple-100'
+  yellow: 'sticker-yellow',
+  pink: 'sticker-pink',
+  blue: 'sticker-blue',
+  green: 'sticker-green',
+  purple: 'sticker-purple'
 };
 
 export type EmojipickerProps = {
@@ -21,6 +21,7 @@ export type EmojipickerProps = {
 }
 
 export type StickerEditorState = {
+  diaryId: string;
   content: string;
   emoji: string;
   color: StickerColor;
