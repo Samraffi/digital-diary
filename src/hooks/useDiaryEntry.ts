@@ -24,7 +24,7 @@ const useDiaryEntry = () => {
   }, [diaryId]);
 
 
-  return { diary, loading, error };
+  return { diaryId, diary, loading, error, setDiary };
 };
 
 export default useDiaryEntry;

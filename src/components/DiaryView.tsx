@@ -30,7 +30,7 @@ const DiaryView = ({ diary, diaryId, redirect, showModal }: DiaryViewProps) => {
       {/* Action buttons styled as office supplies */}
       <div className="flex justify-end gap-4">
         <button
-          onClick={() => redirect(`/diaries/${diaryId}/edit`)}
+          onClick={() => redirect(`/diaries/edit/${diaryId}`)}
           className="flex items-center gap-1 px-4 py-2 bg-white/70 rounded-full shadow-sm hover:bg-white transition-colors"
         >
           <span>✏️</span> Edit

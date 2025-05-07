@@ -8,11 +8,10 @@ import useDeleteDiary from '../hooks/useDeleteDiary';
 import { getBackgroundColor } from '../utils/getBackgroundColor';
 import BackButton from '../components/BackButton';
 
-const DiaryViewPage = () => {
+const DiaryPage = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const navigate = useNavigate();
-  const { diaryId } = useParams<{ diaryId: string }>();
-  const { diary, loading, error } = useDiaryEntry();
+  const { diaryId, diary, loading, error } = useDiaryEntry();
 
   if (error) {
     throw error;
@@ -55,4 +54,4 @@ const DiaryViewPage = () => {
   );
 };
 
-export default DiaryViewPage;
+export default DiaryPage;

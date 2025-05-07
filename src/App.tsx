@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router";
 import { ErrorBoundary } from 'react-error-boundary';
 import DiariesPage from "./pages/DiariesPage";
-import DiaryViewPage from "./pages/DiaryViewPage";
+import DiaryPage from "./pages/DiaryPage";
 import ErrorFallback from './components/ErrorFallback';
 import DiaryCreatePage from "./pages/DiaryCreatePage";
+import DiaryEditPage from "./pages/DiaryEditPage";
 
 const App = () => {
   return (
@@ -15,8 +16,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/diaries" replace />} />
           <Route path="/diaries" element={<DiariesPage />} />
-          <Route path="/diaries/:diaryId" element={<DiaryViewPage />} />
+          <Route path="/diaries/:diaryId" element={<DiaryPage />} />
           <Route path="/diaries/add" element={<DiaryCreatePage />} />
+          <Route path="/diaries/edit/:diaryId" element={<DiaryEditPage />} />
         </Routes>
       </Router>
     </ErrorBoundary>

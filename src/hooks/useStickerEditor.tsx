@@ -1,22 +1,35 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { StickerColor, StickerEditorState } from '../types/sticker';
+import useDiaryEntry from './useDiaryEntry';
 
 const useStickerEditor = (initialColor: StickerColor = 'yellow') => {
-  const [state, setState] = useState<StickerEditorState>({
-    content: '',
-    emoji: '☀️',
-    color: initialColor,
-    showPicker: false,
-  });
+  const { diary } = useDiaryEntry();
+  
+  const [editorState, setEditorState] = useState<StickerEditorState>(() => ({
+    diaryId: diary?.id ?? '',
+    content: diary?.content ?? '',
+    emoji: diary?.emoji ?? '☀️',
+    color: diary?.stickerColor ?? initialColor,
+    showPicker: false
+  }));
 
-  const updateState = useCallback(
-    (update: Partial<StickerEditorState>) => {
-      setState(prev => ({ ...prev, ...update }));
-    },
-    []
-  );
+  useEffect(() => {
+    if (diary) {
+      setEditorState(prev => ({
+        ...prev,
+        diaryId: diary.id,
+        content: diary.content,
+        emoji: diary.emoji,
+        color: diary.stickerColor
+      }));
+    }
+  }, [diary]);
 
-  return { state, updateState };
+  const updateEditor = useCallback((updates: Partial<StickerEditorState>) => {
+    setEditorState(prev => ({ ...prev, ...updates }));
+  }, []);
+
+  return { editorState, updateEditor };
 };
 
 export { useStickerEditor };

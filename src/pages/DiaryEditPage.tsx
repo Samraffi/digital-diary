@@ -1,19 +1,29 @@
 import { useCallback, memo } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { getBackgroundColor } from '../utils/getBackgroundColor';
 import { StickerColor } from '../types/sticker';
-import { createDiary } from '../services/diary/createDiary';
+import { updateDiary } from '../services/diary/updateDiary';
 import EditorToolbar from '../components/EditorToolbar';
 import BackButton from '../components/BackButton';
 import { useStickerEditor } from '../hooks/useStickerEditor';
+import useDiaryEntry from '../hooks/useDiaryEntry';
 
-const DiaryCreatePage = () => {
+const DiaryEditPage = () => {
   const navigate = useNavigate();
   const { editorState: { content, emoji, color, showPicker }, updateEditor } = useStickerEditor();
+  const { diaryId, diary } = useDiaryEntry();
 
-  const handleCreate = useCallback(async () => {
+  console.log({ content, emoji, color, showPicker });
+
+  const handleUpdate = useCallback(async () => {
+    if (!diaryId) {
+      console.error('Diary ID is not defined');
+      throw new Error('Diary ID is not defined');
+    }
+
     try {
-      await createDiary({
+      await updateDiary({
+        id: diaryId,
         content,
         emoji,
         createdAt: new Date().toISOString(),
@@ -22,9 +32,10 @@ const DiaryCreatePage = () => {
       });
       navigate('/diaries');
     } catch (error) {
-      console.error('Failed to create diary:', error);
+      console.error('Failed to update diary:', error);
+      throw error;
     }
-  }, [content, emoji, color, navigate]);
+  }, [content, emoji, diaryId, color, navigate]);
 
   const handleEmojiSelect = useCallback(
     (selected: string) => updateEditor({ emoji: selected, showPicker: false }),
@@ -66,10 +77,10 @@ const DiaryCreatePage = () => {
 
           <div className="flex gap-2 justify-end mt-4">
             <button
-              onClick={handleCreate}
+              onClick={handleUpdate}
               className="px-4 py-2 bg-white rounded-lg shadow-sm hover:bg-gray-50 flex items-center gap-1"
             >
-              <span>📌</span> Create
+              <span>📌</span> Update
             </button>
             <button
               onClick={() => navigate(`/diaries`)}
@@ -84,4 +95,4 @@ const DiaryCreatePage = () => {
   );
 };
 
-export default memo(DiaryCreatePage);
+export default memo(DiaryEditPage);
