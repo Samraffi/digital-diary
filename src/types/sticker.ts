@@ -15,3 +15,14 @@ export const colorMap: Record<StickerColor, string> = {
   purple: 'bg-purple-100'
 };
 
+export type EmojipickerProps = {
+  isOpen: boolean;
+  handleEmojiSelect: (emoji: string) => void
+}
+
+export type StickerEditorState = {
+  content: string;
+  emoji: string;
+  color: StickerColor;
+  showPicker: boolean;
+};

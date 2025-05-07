@@ -22,7 +22,7 @@ const DiaryView = ({ diary, diaryId, redirect, showModal }: DiaryViewProps) => {
 
       {/* Content with paper-like styling */}
       <div className="mt-12 mb-16">
-        <p className="text-gray-800 font-handwriting text-lg whitespace-pre-wrap">
+        <p className="text-gray-800 font-handwriting text-lg whitespace-pre-wrap break-all">
           {diary.content}
         </p>
       </div>
