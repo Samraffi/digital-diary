@@ -1,5 +1,4 @@
 import { NavigateFunction } from 'react-router';
-import { StickerColor } from './sticker';
 
 export type DiaryEntry = {
   id: string;
@@ -7,9 +6,8 @@ export type DiaryEntry = {
   emoji: string;
   createdAt: string;
   updatedAt: string;
-  stickerColor: StickerColor;
+  stickerColor: string;
 }
-
 export type DiaryItemProps = {
   diary: DiaryEntry;
   handleGoToDiary: (id: string) => void;

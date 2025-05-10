@@ -1,29 +1,23 @@
-export type StickerColor =
-  | "yellow"
-  | "pink"
-  | "blue"
-  | "green"
-  | "purple";
-
-export const colorsMap = ["yellow", "pink", "blue", "green", "purple"] as StickerColor[]
- 
-export const colorMap: Record<StickerColor, string> = {
-  yellow: 'sticker-yellow',
-  pink: 'sticker-pink',
-  blue: 'sticker-blue',
-  green: 'sticker-green',
-  purple: 'sticker-purple'
-};
-
-export type EmojipickerProps = {
-  isOpen: boolean;
-  handleEmojiSelect: (emoji: string) => void
+export interface EmojiData {
+  emoji: string;
+  keywords: string[];
 }
 
-export type StickerEditorState = {
-  diaryId: string;
-  content: string;
+export interface EmojiCategories {
+  [key: string]: EmojiData[];
+}
+
+export interface EmojipickerProps {
+  isOpen: boolean;
+  handleEmojiSelect: (emoji: string) => void;
+  onClose: () => void;
+}
+
+export interface StickerData {
+  id: string;
   emoji: string;
-  color: StickerColor;
-  showPicker: boolean;
-};
+  x: number;
+  y: number;
+  scale?: number;
+  rotation?: number;
+}
